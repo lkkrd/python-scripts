@@ -1,14 +1,25 @@
 import csv
 import fnmatch
-dnimiesiaca = []
-for i in range(1, 32):
-    dnimiesiaca.append(i)
 
-print(dnimiesiaca)
+
 with open('PLANY 7-13 - grupa 7.csv', encoding='utf-8') as file:
+    datatype = ['??.??.', '?.??.']
     plan = csv.reader(file)
     daty = []
-    indeksydat = []
+    for row in plan:
+        for element in row:
+            if fnmatch.filter(element, '??.??.') != []:
+                print(fnmatch.filter(element, '??.??'))
+            if element in datatype:
+                daty.append(element)
+            if element == '':
+                continue
+            else: print(element)
+print(daty)
+
+tab = ['chcesz', 'louda']
+print(fnmatch.filter(tab, 'lou?aa'))
+print(type(tab))
 
 
 # czytaj row
